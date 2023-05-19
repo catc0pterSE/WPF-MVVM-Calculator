@@ -22,7 +22,7 @@ public class CalculatorViewModel : ViewModelBase
         set
         {
             _input = new StringBuilder(value);
-            OnPropertyChanged(nameof(Input));
+            OnCalculateButtonPressed();
         }
     }
 
@@ -48,7 +48,7 @@ public class CalculatorViewModel : ViewModelBase
     private void OnInputButtonPressed(string digit)
     {
         _input.Append(digit);
-        OnPropertyChanged(nameof(Input));
+        Input = _input.ToString();
     }
 
     private void OnClearButtonPressed()
@@ -69,7 +69,6 @@ public class CalculatorViewModel : ViewModelBase
         }
         catch (Exception exception)
         {
-            _calculationModel.Clear();
             _errorMessage = exception.Message;
         }
         finally
@@ -80,10 +79,12 @@ public class CalculatorViewModel : ViewModelBase
 
     private void OnDeleteButtonPressed()
     {
-        if (_input.Length > 0)
-            _input.Length -= 1;
+        if (_input.Length == 0)
+            return;
         
+        _input.Length -= 1;
         Input = _input.ToString();
+        OnCalculateButtonPressed();
     }
 
     private void UpdateView()
