@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 using Calculator.Commands;
 using Calculator.Model;
@@ -28,6 +29,8 @@ public class CalculatorViewModel : ViewModelBase
     public string Postfix => _calculationModel.GetPostfixExpressionText();
     public string Result => _calculationModel.GetCalculationResultText();
     public string Message => _errorMessage;
+
+    public string DecimalSeparator => CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
 
     public InputButtonCommand<string> InputButtonCommand =>
         _inputButtonCommand ??= new InputButtonCommand<string>(OnInputButtonPressed);

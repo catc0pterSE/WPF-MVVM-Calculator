@@ -91,7 +91,7 @@
             <Button Name="Button3" Command="{Binding InputButtonCommand}" CommandParameter="3" Style="{StaticResource Btn}" Grid.Column="2" Grid.Row="6" >3</Button>
 
             <Button Name="Button0" Command="{Binding InputButtonCommand}" CommandParameter="0" Style="{StaticResource Btn}" Grid.Column="0" Grid.Row="7" >0</Button>
-            <Button Name="ButtonPoint" Command="{Binding InputButtonCommand}" CommandParameter="," Style="{StaticResource Btn}" Grid.Column="1" Grid.Row="7" >,</Button>
+            <Button Name="ButtonPoint" Command="{Binding InputButtonCommand}" CommandParameter="{Binding DecimalSeparator}" Style="{StaticResource Btn}" Grid.Column="1" Grid.Row="7" >,</Button>
 
             <Button Name="ButtonClear" Command="{Binding ClearButtonCommand}" Background="DarkGray" Style="{StaticResource Btn}"  Grid.Column="2" Grid.Row="7" ToolTip="Clear All">C</Button>
 
