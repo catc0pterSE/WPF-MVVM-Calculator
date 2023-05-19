@@ -35,6 +35,9 @@ public class Tokenizer
 
     public List<IToken> Parse(string expression)
     {
+        _functionTokenBuilder.Clear();
+        _valueTokenBuilder.Clear();
+        
         for (int i = 0; i < expression.Length; i++)
         {
             char character = expression[i];

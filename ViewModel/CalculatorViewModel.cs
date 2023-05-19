@@ -57,15 +57,17 @@ public class CalculatorViewModel : ViewModelBase
     
     private void OnCalculateButtonPressed()
     {
+        var text = Input;
         try
         {
-            _calculationModel.Calculate(Input);
+            _calculationModel.Calculate(text);
         }
         catch (Exception exception)
         {
             _calculationModel.Clear();
             _errorMessage = exception.Message;
         }
+        
         
         UpdateView();
     }
