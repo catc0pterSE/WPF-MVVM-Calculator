@@ -129,5 +129,5 @@ public class Tokenizer
         _operatorTypeMapper.ContainsKey(character);
 
     private bool IsDecimalSeparator(char character) =>
-        character == '.';
+        character == ',';
 }
