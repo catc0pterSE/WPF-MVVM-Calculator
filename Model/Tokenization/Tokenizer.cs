@@ -130,5 +130,5 @@ public class Tokenizer
         _operatorTypeMapper.ContainsKey(character);
 
     private bool IsDecimalSeparator(char character) =>
-        character == CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator[0];
+        character == CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0];
 }
