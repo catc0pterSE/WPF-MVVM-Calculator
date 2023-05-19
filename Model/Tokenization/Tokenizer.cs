@@ -22,7 +22,7 @@ public class Tokenizer
         ['^'] = OperatorType.Power,
         ['('] = OperatorType.OpeningBracket,
         [')'] = OperatorType.ClosingBracket,
-        ['~'] = OperatorType.UnaryMinus,
+        ['–'] = OperatorType.UnaryMinus,
     };
 
     private readonly Dictionary<string, OperatorType> _functionTypeMapper = new Dictionary<string, OperatorType>()
@@ -43,7 +43,7 @@ public class Tokenizer
             char character = expression[i];
 
             if (character == '-' && (i == 0 || CanPreсedeUnarySign(expression[i - 1]))) //recognize unary '-''
-                character = '~';
+                character = '–';
 
             if (IsOperatorCharacter(character))
             {

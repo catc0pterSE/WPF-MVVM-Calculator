@@ -14,6 +14,7 @@ public class CalculatorViewModel : ViewModelBase
     private InputButtonCommand<string>? _inputButtonCommand;
     private ButtonCommand _clearButtonCommand;
     private ButtonCommand _calculateButtonCommand;
+    private ButtonCommand _deleteButtonCommand;
 
     public string Input
     {
@@ -21,10 +22,10 @@ public class CalculatorViewModel : ViewModelBase
         set
         {
             _input = new StringBuilder(value);
-            OnPropertyChanged();
+            OnPropertyChanged(nameof(Input));
         }
     }
-    
+
     public string Infix => _calculationModel.GetInfixExpressionText();
     public string Postfix => _calculationModel.GetPostfixExpressionText();
     public string Result => _calculationModel.GetCalculationResultText();
@@ -41,12 +42,15 @@ public class CalculatorViewModel : ViewModelBase
     public ButtonCommand CalculateButtonCommand =>
         _calculateButtonCommand ??= new ButtonCommand(OnCalculateButtonPressed);
 
+    public ButtonCommand DeleteButtonCommand =>
+        _deleteButtonCommand ??= new ButtonCommand(OnDeleteButtonPressed);
+
     private void OnInputButtonPressed(string digit)
     {
         _input.Append(digit);
         OnPropertyChanged(nameof(Input));
     }
-    
+
     private void OnClearButtonPressed()
     {
         _input.Clear();
@@ -54,22 +58,32 @@ public class CalculatorViewModel : ViewModelBase
         _errorMessage = "";
         UpdateView();
     }
-    
+
     private void OnCalculateButtonPressed()
     {
-        var text = Input;
+        _errorMessage = "";
+        
         try
         {
-            _calculationModel.Calculate(text);
+            _calculationModel.Calculate(Input);
         }
         catch (Exception exception)
         {
             _calculationModel.Clear();
             _errorMessage = exception.Message;
         }
+        finally
+        {
+            UpdateView();
+        }
+    }
+
+    private void OnDeleteButtonPressed()
+    {
+        if (_input.Length > 0)
+            _input.Length -= 1;
         
-        
-        UpdateView();
+        Input = _input.ToString();
     }
 
     private void UpdateView()
@@ -80,6 +94,4 @@ public class CalculatorViewModel : ViewModelBase
         OnPropertyChanged(nameof(Result));
         OnPropertyChanged(nameof(Message));
     }
-    
-  
 }
