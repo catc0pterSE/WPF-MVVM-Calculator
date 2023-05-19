@@ -17,6 +17,7 @@ public class CalculationModel
 
     public void Calculate(string expression)
     {
+        Clear();
         _infixExpression = _tokenizer.Parse(expression);
         _postfixExpression = _toPostfixConverter.Convert(_infixExpression);
         _result = _calculator.Calculate(_postfixExpression);
