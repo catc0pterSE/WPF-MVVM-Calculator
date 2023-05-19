@@ -25,6 +25,9 @@ public class CalculationModel
 
     public void Clear()
     {
+        _tokenizer.Clear();
+        _toPostfixConverter.Clear();
+        _calculator.Clear();
         _infixExpression.Clear();
         _postfixExpression.Clear();
         _result = null;

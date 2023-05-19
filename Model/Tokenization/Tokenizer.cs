@@ -35,8 +35,7 @@ public class Tokenizer
 
     public List<IToken> Parse(string expression)
     {
-        _functionTokenBuilder.Clear();
-        _valueTokenBuilder.Clear();
+        Clear();
         
         for (int i = 0; i < expression.Length; i++)
         {
@@ -74,6 +73,13 @@ public class Tokenizer
         return GetResult();
     }
 
+
+    public void Clear()
+    {
+        _functionTokenBuilder.Clear();
+        _valueTokenBuilder.Clear();
+        _infixNotationTokens.Clear();
+    }
 
     private List<IToken> GetResult()
     {

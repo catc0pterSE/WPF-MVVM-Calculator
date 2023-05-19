@@ -36,12 +36,19 @@ public class ToPostfixConverter
 
     public List<IToken> Convert(IEnumerable<IToken> infixNotationTokens)
     {
+        Clear();
+        
         foreach (IToken token in infixNotationTokens)
             ProcessToken(token);
 
         return GetResult();
     }
 
+    public void Clear()
+    {
+        _tokenStack.Clear();
+        _postfixNotationTokens.Clear();
+    }
     
     private List<IToken> GetResult()
     {

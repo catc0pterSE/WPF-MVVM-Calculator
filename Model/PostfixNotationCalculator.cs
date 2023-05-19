@@ -31,11 +31,16 @@ public class PostfixNotationCalculator
 
     public OperandToken Calculate(IEnumerable<IToken> tokens)
     {
+        Clear();
+        
         foreach (var token in tokens)
             ProcessToken(token);
 
         return GetResult();
     }
+    
+    public void Clear() => 
+        _operandTokensStack.Clear();
 
     private void ProcessToken(IToken token)
     {
