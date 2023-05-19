@@ -70,7 +70,7 @@ public class Tokenizer
             }
             else
             {
-               throw new SyntaxException($"Cannot parse {character}");
+               throw new SyntaxException($"Cannot parse character '{character}'");
             }
         }
 
