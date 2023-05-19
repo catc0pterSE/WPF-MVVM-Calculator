@@ -68,6 +68,10 @@ public class Tokenizer
 
                 _valueTokenBuilder.Append(character);
             }
+            else
+            {
+               throw new SyntaxException($"Cannot parse {character}");
+            }
         }
 
         return GetResult();
