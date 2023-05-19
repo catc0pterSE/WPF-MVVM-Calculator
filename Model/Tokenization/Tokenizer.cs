@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using Calculator.Model.Exception;
 using Calculator.Model.Tokenization.Tokens;
@@ -129,5 +130,5 @@ public class Tokenizer
         _operatorTypeMapper.ContainsKey(character);
 
     private bool IsDecimalSeparator(char character) =>
-        character == ',';
+        character == CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator[0];
 }
