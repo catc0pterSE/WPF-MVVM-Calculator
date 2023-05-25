@@ -1,3 +1,3 @@
 WPF calculator build using Shunting Yard Algorithm.
 MVVM architecture.
-Developed as test rask for job application.
+Developed as test task for job application.
